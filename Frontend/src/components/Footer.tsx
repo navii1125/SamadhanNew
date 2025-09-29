@@ -76,8 +76,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-foreground mb-4">Contact</h3>
             <address className="space-y-2 not-italic text-sm text-muted-foreground">
               <p>123 Smart City, Civic Center, 10001</p>
-              <p>contact@samadhanx.com</p>
-              <p>+91-1234567</p>
+              <p>samadhanx25@gmail.com</p>
+              <p>+91-7665863120</p>
             </address>
           </div>
           
@@ -111,3 +111,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+

@@ -178,7 +178,7 @@ const SolutionSection = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-20 animate-fade-in" style={{ animationDelay: "0.8s" }}>
+        {/* <div className="text-center mt-20 animate-fade-in" style={{ animationDelay: "0.8s" }}>
           <div className="bg-gradient-card border border-border rounded-2xl p-8 shadow-hero max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Ready to Transform Civic Engagement?
@@ -194,9 +194,9 @@ const SolutionSection = () => {
               <Button variant="outline" size="lg">
                 View Demo
               </Button>
-            </div>
-          </div>
-        </div>
+            </div> */}
+          {/* </div> */}
+        {/* </div> */}
       </div>
     </section>
   );

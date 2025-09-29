@@ -27,6 +27,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import auth, complaints, ai
+from app.routes import feedback
+from app.routes import users
+
 
 # ⿡ Create FastAPI app first
 app = FastAPI(title="SamadhanX Backend")
@@ -44,6 +47,9 @@ app.add_middleware(
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
 app.include_router(complaints.router, prefix="/complaints", tags=["Complaints"])
 app.include_router(ai.router, prefix="/ai", tags=["AI"])
+app.include_router(feedback.router)
+app.include_router(users.router)
+
 
 # ⿤ Root endpoint
 @app.get("/")

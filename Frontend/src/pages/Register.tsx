@@ -555,6 +555,130 @@
 
 // export default Register;
 
+// import { useState } from "react";
+// import { useNavigate, Link } from "react-router-dom";
+// import { Button } from "@/components/ui/button";
+// import { Input } from "@/components/ui/input";
+// import { Label } from "@/components/ui/label";
+// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+// const Register = () => {
+//   const [form, setForm] = useState({
+//     name: "",
+//     email: "",
+//     password: "",
+//     confirm_password: "",
+//   });
+//   const [message, setMessage] = useState("");
+//   const [error, setError] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     setForm({ ...form, [e.target.name]: e.target.value });
+//   };
+
+//   const handleSubmit = async (e: React.FormEvent) => {
+//     e.preventDefault();
+//     setError("");
+//     setMessage("");
+
+//     if (form.password !== form.confirm_password) {
+//       setError("Passwords do not match");
+//       return;
+//     }
+
+//     try {
+//       const response = await fetch("http://127.0.0.1:8000/auth/register", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(form),
+//       });
+
+//       const data = await response.json();
+
+//       if (response.ok) {
+//         localStorage.setItem("isLoggedIn", "true");
+//         setMessage("Account created! Redirecting to home...");
+//         setTimeout(() => navigate("/"), 1500);
+//       } else {
+//         setError(data.detail || "Registration failed");
+//       }
+//     } catch (err) {
+//       setError("Something went wrong!");
+//     }
+//   };
+
+//   return (
+//     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+//       <Card className="w-full max-w-md">
+//         <CardHeader>
+//           <CardTitle className="text-center">Create Account</CardTitle>
+//         </CardHeader>
+//         <CardContent>
+//           <form onSubmit={handleSubmit} className="space-y-4">
+//             <div>
+//               <Label>Name</Label>
+//               <Input
+//                 name="name"
+//                 type="text"
+//                 placeholder="Enter your name"
+//                 value={form.name}
+//                 onChange={handleChange}
+//                 required
+//               />
+//             </div>
+//             <div>
+//               <Label>Email</Label>
+//               <Input
+//                 name="email"
+//                 type="email"
+//                 placeholder="Enter your email"
+//                 value={form.email}
+//                 onChange={handleChange}
+//                 required
+//               />
+//             </div>
+//             <div>
+//               <Label>Password</Label>
+//               <Input
+//                 name="password"
+//                 type="password"
+//                 placeholder="Enter your password"
+//                 value={form.password}
+//                 onChange={handleChange}
+//                 required
+//                 minLength={6}
+//               />
+//             </div>
+//             <div>
+//               <Label>Confirm Password</Label>
+//               <Input
+//                 name="confirm_password"
+//                 type="password"
+//                 placeholder="Confirm your password"
+//                 value={form.confirm_password}
+//                 onChange={handleChange}
+//                 required
+//               />
+//             </div>
+//             <Button type="submit" className="w-full">
+//               Register
+//             </Button>
+//           </form>
+//           <div className="mt-4 text-center">
+//             <Link to="/login">
+//               <Button variant="outline">Back to Login</Button>
+//             </Link>
+//           </div>
+//           {error && <p className="text-destructive text-center mt-2">{error}</p>}
+//           {message && <p className="text-green-600 text-center mt-2">{message}</p>}
+//         </CardContent>
+//       </Card>
+//     </div>
+//   );
+// };
+
+// export default Register;
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -597,9 +721,17 @@ const Register = () => {
       const data = await response.json();
 
       if (response.ok) {
+        // ✅ Save login info
         localStorage.setItem("isLoggedIn", "true");
-        setMessage("Account created! Redirecting to home...");
-        setTimeout(() => navigate("/"), 1500);
+        localStorage.setItem("userEmail", data.email || form.email);
+        localStorage.setItem("userName", data.name || form.name);
+
+        if (data.access_token) {
+          localStorage.setItem("token", data.access_token);
+        }
+
+        setMessage("Account created! Redirecting to dashboard...");
+        setTimeout(() => navigate("/dashboard"), 1500);
       } else {
         setError(data.detail || "Registration failed");
       }
@@ -671,7 +803,9 @@ const Register = () => {
             </Link>
           </div>
           {error && <p className="text-destructive text-center mt-2">{error}</p>}
-          {message && <p className="text-green-600 text-center mt-2">{message}</p>}
+          {message && (
+            <p className="text-green-600 text-center mt-2">{message}</p>
+          )}
         </CardContent>
       </Card>
     </div>

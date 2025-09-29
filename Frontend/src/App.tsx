@@ -124,6 +124,7 @@ import Analytics from "./pages/admin/Analytics";
 import UserManagement from "./pages/admin/UserManagement";
 import Notifications from "./pages/admin/Notifications";
 import NotFound from "./pages/NotFound";
+import UserDashboard from "./pages/Userdashboard";
 
 const queryClient = new QueryClient();
 
@@ -161,6 +162,8 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
+
 
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout />}>
