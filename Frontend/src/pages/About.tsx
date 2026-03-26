@@ -413,7 +413,7 @@ const About = () => {
     formData.append("message", feedbackMessage);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/feedback/", {
+      const res = await fetch("https://samadhannew-1.onrender.com/feedback/", {
         method: "POST",
         body: formData, // let browser set multipart boundary
       });
@@ -450,7 +450,7 @@ const About = () => {
     formData.append("message", contactMessage);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/feedback/contact", {
+      const res = await fetch("https://samadhannew-1.onrender.com/feedback/contact", {
         method: "POST",
         body: formData,
       });

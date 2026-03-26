@@ -1,5 +1,4 @@
-const BASE = (import.meta.env.VITE_API_URL || "http://127.0.0.1:5000").replace(/\/+$/, "");
-
+const BASE = "https://samadhannew-1.onrender.com";
 export async function classifyText(text: string) {
   const r = await fetch(`${BASE}/classify-text`, {
     method: "POST",
