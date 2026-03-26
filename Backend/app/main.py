@@ -37,7 +37,7 @@ app = FastAPI(title="SamadhanX Backend")
 # ⿢ Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # or ["http://localhost:3000"] for your React frontend
+    allow_origins=["https://samadhanx.netlify.app"],  # or ["http://localhost:3000"] for your React frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
