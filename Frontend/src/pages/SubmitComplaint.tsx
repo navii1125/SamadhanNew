@@ -1078,7 +1078,7 @@ const SubmitComplaint = () => {
 
     try {
       setSubmitting(true);
-      const res = await fetch("http://127.0.0.1:8000/complaints/", {
+      const res = await fetch("https://samadhannew-1.onrender.com/complaints/", {
         method: "POST",
         body: formData, // let browser set Content-Type boundary
       });

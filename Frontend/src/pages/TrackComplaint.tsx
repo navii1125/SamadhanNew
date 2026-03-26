@@ -339,7 +339,7 @@ const TrackComplaint = () => {
 
     if (trackingId.trim()) {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/complaints/tracking/${trackingId}`);
+        const res = await fetch(`https://samadhannew-1.onrender.com/complaints/tracking/${trackingId}}`);
         if (!res.ok) {
           throw new Error("Complaint not found");
         }
