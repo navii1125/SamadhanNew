@@ -448,14 +448,17 @@ const Login = () => {
       }
 
       // ✅ Save login info (normalized email)
+      // 
       localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem(
-        "userEmail",
-        (data.email || emailPhone).trim().toLowerCase()
-      );
-      if (data.name) {
-        localStorage.setItem("userName", data.name);
-      }
+
+localStorage.setItem(
+  "userEmail",
+  (data.user?.email || emailPhone).trim().toLowerCase()
+);
+
+if (data.user?.name) {
+  localStorage.setItem("userName", data.user.name);
+}
 
       // If backend sends a token
       if (data.access_token) {
